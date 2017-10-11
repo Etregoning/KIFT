@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "UTF-8">
+	  <title>KIFT</title>
+	  <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+	  <link rel="stylesheet" type="text/css" href="style/style.css">
+   </head>
+   
+	<body>
+		<div class="main-container">
+			<h1>Speak and you shall be heard!</h1>
+			<img id="mic-button" height="100" width="100" src="img/microphone.svg" alt="Microphone button">
+			<video autoplay></video> 
+		</div>
+      <script type = "text/javascript">
+         function errorCallback(e) {
+            console.log('Error', e)
+         }
+
+         navigator.getUserMedia({video: false, audio: true}, (localMediaStream) => {
+            var video = document.querySelector('video')
+            video.src = window.URL.createObjectURL(localMediaStream)
+            video.onloadedmetadata = (e) => {
+               // Ready to go. Do some stuff.
+            };
+         }, errorCallback)
+      </script>
+   </body>
+</html>
